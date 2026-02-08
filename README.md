@@ -3,7 +3,7 @@
 ## Overview
 
 This repository contains an end-to-end ingestion and processing pipeline for the **COVID-19 Kaggle dataset**  
-(https://www.kaggle.com/datasets/imdevskp/corona-virus-report), implemented to match the technical challenge requirements: Spark ingestion using **RDD + parallelism**, Pandas ingestion, **Parquet** outputs, **OOP** in a notebook, **type enforcement in the last layer**, **delta/offset control** (process only novelties per run), and a **DER** diagram. :contentReference[oaicite:0]{index=0} :contentReference[oaicite:1]{index=1}
+(https://www.kaggle.com/datasets/imdevskp/corona-virus-report), implemented to match the technical challenge requirements: Spark ingestion using **RDD + parallelism**, Pandas ingestion, **Parquet** outputs, **OOP** in a notebook, **type enforcement in the last layer**, **delta/offset control** (process only novelties per run), and a **DER** diagram.
 
 The solution is intentionally structured to look and behave like a production ingestion job: clear responsibilities, deterministic incremental processing, and explicit typing before persistence.
 
@@ -20,7 +20,7 @@ Per the challenge document, this implementation provides:
 - Code written in an **object-oriented** way (classes inside the notebook).
 - Add comments in the important parts.
 - Enforce correct types **in the last layer**.
-- Implement **delta/offset control**: each processing run persists only novelties. :contentReference[oaicite:2]{index=2} :contentReference[oaicite:3]{index=3}
+- Implement **delta/offset control**: each processing run persists only novelties.
 
 ---
 
@@ -59,7 +59,7 @@ After a successful run, the project directory looks like:
 ```
 
 
-The deliverable ZIP contains the required artifacts (data + process outputs). :contentReference[oaicite:4]{index=4}
+The deliverable ZIP contains the required artifacts (data + process outputs).
 
 ---
 
@@ -78,7 +78,7 @@ This keeps the ingestion logic generic and makes it easy to add or remove datase
 
 ### 2) Delta / Offset Control (Process Only Novelties)
 
-A core requirement is to process only “novelties” on each run. :contentReference[oaicite:5]{index=5}
+A core requirement is to process only “novelties” on each run.
 
 This is implemented through a deterministic composite-key hashing approach:
 
@@ -101,7 +101,7 @@ This is implemented through a deterministic composite-key hashing approach:
 
 ### 3) Type Handling in the Last Layer
 
-The challenge requests explicit type handling in the last layer (e.g., numbers must be numbers, not strings). :contentReference[oaicite:6]{index=6}
+The challenge requests explicit type handling in the last layer (e.g., numbers must be numbers, not strings).
 
 This pipeline follows a strict rule:
 
@@ -125,7 +125,7 @@ This mirrors real ingestion patterns: CSV data is frequently messy, so the safes
 
 ## Spark Pipeline Details (RDD + Parallelism)
 
-The Spark ingestion follows the requirement of using RDD. :contentReference[oaicite:7]{index=7}
+The Spark ingestion follows the requirement of using RDD.
 
 ### Why RDD in this solution
 The challenge explicitly asks for RDD usage. In Spark, the clean way to comply without losing DataFrame benefits is:
@@ -239,7 +239,7 @@ Containing:
 - `state/`
 - `README_DELIVERABLE.txt`
 
-This matches the expected deliverable format: process + data in a ZIP file. :contentReference[oaicite:8]{index=8}
+This matches the expected deliverable format: process + data in a ZIP file. 
 
 ---
 
